@@ -35,26 +35,69 @@
 
 
 #*************************************************
+#
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     def to_pound(self):
+#         return self.__kg * 2.205
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, kg):
+#         if isinstance(kg, (int, float)):
+#             self.__kg = kg
+#         else:
+#             raise ValueError('Килограммы задаются только числами')
 
-class KgToPounds:
-    def __init__(self, kg):
-        self.__kg = kg
 
-    def to_pound(self):
-        return self.__kg * 2.205
+#******************************************************
+import string
+class Alphabet:
+    def __init__(self, lang, letters):
+        self.lang = lang
+        self.letters = list(letters)
 
-    @property
-    def kg(self):
-        return self.__kg
 
-    @kg.setter
-    def kg(self, kg):
-        if isinstance(kg, (int, float)):
-            self.__kg = kg
-        else:
-            raise ValueError('Килограммы задаются только числами')
+    def print(self):
+        return self.letters
 
-        
+    def letters_num(self):
+        len(self.letters)
+
+class EngAlphabet(Alphabet):
+    __let_num = 26
+
+    def __init__(self, lang, letters):
+        super().__init__(lang, letters)
+        self.lang = 'En'
+        self.letters = string.ascii_uppercase
+
+    def _letters_num(self):
+        return EngAlphabet.__let_num
+
+    def is_en_letter(self, a):
+        if a.upper() in self.letters:
+            return True
+        return False
+
+    def letters_num(self):
+        return EngAlphabet._letters_num
+
+    @staticmethod
+    def example():
+        print('Hello')
+
+b = EngAlphabet('En', 'My Mommi')
+print(b.print())
+print(b._letters_num())
+print(b.is_en_letter('F'))
+print(b.is_en_letter('Щ'))
+EngAlphabet.example()
 
 
 
